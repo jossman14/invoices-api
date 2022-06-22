@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInvoiceStatusesTable extends Migration
+class CreateWorkServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,19 @@ class CreateInvoiceStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('invoice_statuses', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('work_services', function (Blueprint $table) {
+            $table->id();
             $table->integer('invoices_id')->unsigned();
             $table->foreign('invoices_id')->references("id")->on("invoices")->onUpdate('cascade')
-            ->onDelete('cascade');
-            $table->integer('paid');
-            $table->integer('unpaid');
-            $table->integer('payment_method');
-            $table->integer('status');
+            ->onDelete('cascade');;
+            $table->string('description');
+            $table->integer('amount');
+            $table->string('unit');
+            $table->integer('unit_price');
+            $table->integer('total');
             $table->timestamps();
             $table->softDeletes();
+
         });
     }
 
@@ -34,6 +36,6 @@ class CreateInvoiceStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invoice__statuses');
+        Schema::dropIfExists('work_services');
     }
 }
