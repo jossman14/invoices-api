@@ -21,7 +21,7 @@ class InvoiceStatusController extends Controller
         DB::raw('SUM(invoice_statuses.unpaid) as total_unpaid'),
         )
         ->leftJoin("invoices","invoices.id",'=','invoice_statuses.invoices_id')
-        ->where("deleted_at","=", null)
+        ->where("invoices.deleted_at","=", null)
         ->groupBy('invoices.invoice_number','invoices.customer',)
         ->get();
 
@@ -37,7 +37,7 @@ class InvoiceStatusController extends Controller
         WHEN invoice_statuses.status = "3" THEN "Overdue payment"
         END) AS last_status'),)
         ->leftJoin("invoices","invoices.id",'=','invoice_statuses.invoices_id')
-        ->where("deleted_at","=", null)
+        ->where("invoices.deleted_at","=", null)
         ->groupBy('invoices.invoice_number','invoices.customer', 'last_payment_method','last_status')
         ->get();
 
@@ -84,7 +84,7 @@ class InvoiceStatusController extends Controller
         )
         ->leftJoin("invoices","invoices.id",'=','invoice_statuses.invoices_id')
         ->where("invoices.id","=", $InvoiceStatus)
-        ->where("deleted_at","=", null)
+        ->where("invoices.deleted_at","=", null)
         ->groupBy('invoices.invoice_number','invoices.customer',)
         ->get();
 
@@ -101,7 +101,7 @@ class InvoiceStatusController extends Controller
         END) AS last_status'),)
         ->leftJoin("invoices","invoices.id",'=','invoice_statuses.invoices_id')
         ->where("invoices.id","=", $InvoiceStatus)
-        ->where("deleted_at","=", null)
+        ->where("invoices.deleted_at","=", null)
         ->groupBy('invoices.invoice_number','invoices.customer', 'last_payment_method','last_status')
         ->get();
 
