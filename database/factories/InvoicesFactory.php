@@ -15,7 +15,7 @@ class InvoicesFactory extends Factory
      */
     public function definition()
     {
-        $filepath = public_path('storage/images');
+        // $filepath = public_path('storage/images');
 
         return [
             'customer' => $this->faker->name(),
@@ -24,7 +24,7 @@ class InvoicesFactory extends Factory
             'date' => $this->faker->date($format = 'Y-m-d', $max = now()),
             'expire_date' => $this->faker->date($format = 'Y-m-d', $max = '2025-10-19', $min = now()),
             'note' => $this->faker->text(),
-            'signature' => $this->faker->image($filepath,640,480, 'cats', true, true, 'jossman'),
+            'signature' => $this->faker->image(),
         ];
     }
 }
