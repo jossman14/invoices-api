@@ -91,4 +91,12 @@ class PaymentServicesController extends Controller
         $payment_services = PaymentServices::destroy($id);
         return response(["msg" => "succes delete", 'callback' => $payment_services] ,200);
     }
+
+    //add function for auto generate api docs
+    public function create(){
+        //
+    }
+    public function edit(){
+        //
+    }
 }

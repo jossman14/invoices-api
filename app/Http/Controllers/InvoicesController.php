@@ -170,4 +170,12 @@ class InvoicesController extends Controller
         $invoice = Invoices::destroy($invoices);
         return response(["msg" => "succes delete", 'callback' => $invoice] ,200);
     }
+
+    //add function for auto generate api docs
+    public function create(){
+        //
+    }
+    public function edit(){
+        //
+    }
 }

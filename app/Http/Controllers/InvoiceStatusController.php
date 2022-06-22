@@ -148,4 +148,12 @@ class InvoiceStatusController extends Controller
         $invoice_status = InvoiceStatus::destroy($InvoiceStatus);
         return response(["msg" => "succes delete", 'callback' => $invoice_status] ,200);
     }
+
+    //add function for auto generate api docs
+    public function create(){
+        //
+    }
+    public function edit(){
+        //
+    }
 }

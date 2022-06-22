@@ -92,4 +92,12 @@ class WorkServicesController extends Controller
         $work_services = WorkServices::destroy($id);
         return response(["msg" => "succes delete", 'callback' => $work_services] ,200);
     }
+
+    //add function for auto generate api docs
+    public function create(){
+        //
+    }
+    public function edit(){
+        //
+    }
 }
